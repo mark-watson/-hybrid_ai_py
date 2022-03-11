@@ -1,9 +1,13 @@
 from distutils.core import setup
 
-setup(name='rdflibstub',
+setup(name='hybrid_ai_py',
       version='0.27',
-      packages=['rdflibstub'],
+      packages=['hybrid_ai_py'],
       license='Apache 2',
-      py_modules=['rdflibstub'],
-      #scripts=['spacystub/spacystub'],
+      py_modules=['hybrid_ai_py'],
+      install_requires=
+      [
+        'sparqlwrapper', 'rdflib', 'openai',
+      ],      
+
       long_description=open('README.md').read())
