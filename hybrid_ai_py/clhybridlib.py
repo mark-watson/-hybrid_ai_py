@@ -5,7 +5,7 @@ from SPARQLWrapper import SPARQLWrapper
 from pprint import pprint
 
 
-def query(sparql_query, endpoint):
+def query_helper(sparql_query, endpoint):
     sparql = SPARQLWrapper(endpoint)
     sparql.setQuery(sparql_query)
     sparql.setReturnFormat('json')
@@ -19,7 +19,7 @@ def query(sparql_query, endpoint):
 
 
 def query_dbpedia(sparql_query):
-    return query(sparql_query, 'http://dbpedia.org/sparql')
+    return query_helper(sparql_query, 'http://dbpedia.org/sparql')
 
 
 ## OpenAI GPT-3 APIs ##
