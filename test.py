@@ -6,11 +6,9 @@ from pprint import pprint
 
 from hybrid_ai_py.clhybridlib import QA, generate_text
 
-text_completion_result = generate_text("Q: Who is Bill Clinton married to?")
+text_completion_result = generate_text("President Clinton went to Mexico to")
 
 pprint(text_completion_result)
 
-#text_completion_result = generate_text("Where is the Valley of Kings?")
-
-#pprint(text_completion_result)
+pprint(QA("where does Bill Gates work?"))
 

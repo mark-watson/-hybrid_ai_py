@@ -7,7 +7,7 @@ setup(name='hybrid_ai_py',
       py_modules=['hybrid_ai_py'],
       install_requires=
       [
-        'sparqlwrapper', 'rdflib', 'openai',
+        'sparqlwrapper', 'rdflib', 'openai', 'spacy', 'transformers', 'torch'
       ],      
 
       long_description=open('README.md').read())
