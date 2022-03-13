@@ -43,21 +43,6 @@ def generate_text(prompt, temperature=0.7, top_p=0.9, max_tokens=50):
         stop=["\n"])
     return response
 
-
-def QA(text, max_tokens=50):
-    prompt = "\n\nQ: " + text + " A:\n\n"
-    print(f"prompt = {prompt}")
-    response = openai.Completion.create(
-        engine="text-davinci-001",
-        prompt=prompt,
-        max_tokens=max_tokens,
-        temperature=0,
-        top_p=1.0,
-        frequency_penalty=0.0,
-        presence_penalty=0.0,
-        stop=["\n", "<|endoftext|>"])
-    return response  # .choices # [0]['text']
-
 ## My BERT + DBPedia QA ##
 
 from transformers import pipeline
@@ -124,5 +109,5 @@ def QA(query_text):
                 "question": query_text,
                 "context": context_text
                })
-  print(answer)
-  return answer
+  print(answer['answer'])
+  return answer['answer']
