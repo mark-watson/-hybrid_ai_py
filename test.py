@@ -10,4 +10,3 @@ from hybrid_ai_py.clhybridlib import QA, generate_text
 # pprint(text_completion_result)
 
 pprint(QA("where does Bill Gates work?"))
-
