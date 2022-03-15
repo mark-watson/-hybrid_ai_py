@@ -4,7 +4,6 @@ import rdflib
 from SPARQLWrapper import SPARQLWrapper
 from pprint import pprint
 
-
 def query_helper(sparql_query, endpoint):
     sparql = SPARQLWrapper(endpoint)
     sparql.setQuery(sparql_query)
@@ -16,7 +15,6 @@ def query_helper(sparql_query, endpoint):
     for r1 in results:
         rr.append([r1[v]['value'] for v in vars])
     return rr
-
 
 def query_dbpedia(sparql_query):
     return query_helper(sparql_query, 'http://dbpedia.org/sparql')
@@ -41,7 +39,7 @@ def generate_text(prompt, temperature=0.7, top_p=0.9, max_tokens=50):
         frequency_penalty=0.0,
         presence_penalty=0.0,
         stop=["\n"])
-    return response
+    return response['choices'][0]['text']
 
 ## My BERT + DBPedia QA ##
 
@@ -75,6 +73,7 @@ def entities_in_text(s):
         else:
             ret[etype] = [ename]
     return ret
+
 
 def dbpedia_get_entities_by_name(name, dbpedia_type):
   sparql = "select distinct ?s ?comment where {{ ?s <http://www.w3.org/2000/01/rdf-schema#label>  \"{}\"@en . ?s <http://www.w3.org/2000/01/rdf-schema#comment>  ?comment  . FILTER  (lang(?comment) = 'en') . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> {} . }} limit 15".format(name, dbpedia_type)
