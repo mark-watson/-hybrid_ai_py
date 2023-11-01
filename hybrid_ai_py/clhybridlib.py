@@ -30,15 +30,14 @@ openai.api_key = os.getenv("OPENAI_KEY")
 
 
 def generate_text(prompt, temperature=0.7, top_p=0.9, max_tokens=50):
-    response = openai.Completion.create(
-        engine="davinci",
-        prompt=prompt,
-        max_tokens=max_tokens,
-        temperature=temperature,
-        top_p=top_p,
-        frequency_penalty=0.0,
-        presence_penalty=0.0,
-        stop=["\n"])
+    response = openai.ChatCompletion.create(
+      model="gpt-3.5-turbo",
+      messages=[
+          {"role": "system", "content": "You are a helpful assistant."},
+          {"role": "user", "content": prompt},
+      ]
+    ) 
+    print("**response:", response)  
     return response['choices'][0]['text']
 
 ## My BERT + DBPedia QA ##
