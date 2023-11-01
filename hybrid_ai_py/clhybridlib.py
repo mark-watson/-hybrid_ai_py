@@ -38,7 +38,7 @@ def generate_text(prompt, temperature=0.7, top_p=0.9, max_tokens=50):
       ]
     ) 
     print("**response:", response)  
-    return response['choices'][0]['text']
+    return response['choices'][0]['message']['content']
 
 ## My BERT + DBPedia QA ##
 
